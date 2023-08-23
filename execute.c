@@ -8,7 +8,8 @@
  * @file: monty file
  * Return: nothing
  */
-int execute(char *content, stack_t **head, unsigned int line_number, FILE *file)
+int execute(char *content, stack_t **head,
+		unsigned int line_number, FILE *file)
 {
 	instruction_t ops[] = {
 				{"push", push},
