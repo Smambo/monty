@@ -14,6 +14,9 @@ int execute(char *content, stack_t **head,
 	instruction_t ops[] = {
 				{"push", push},
 				{"pall", pall},
+				{"swap", sawp},
+				{"add", add},
+				{"nop", nop},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;
