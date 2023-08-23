@@ -1,14 +1,11 @@
 #include "monty.h"
 /**
-  *execute - executes opcodes
-  *f_nop- nothing
+  *nop- nothing
   *@head: head f stack
-  *@file: monty file
-  *@counter: line_number
-  *@content: line input
+  *@line_number: line_number
   *Return: no return
  */
-void f_nop(stack_t **head, unsigned int counter)
+void nop(stack_t **head, unsigned int line_number)
 {
 	(void) counter;
 	(void) head;
