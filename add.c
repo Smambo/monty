@@ -19,7 +19,7 @@ void add(stack_t **head, unsigned int line_number)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		fclose(sq.file);
 		free(sq.content);
 		_free(*head);
