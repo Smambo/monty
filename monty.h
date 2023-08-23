@@ -1,9 +1,13 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define UNUSED(x) (void)(x)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -34,5 +38,29 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct sq_s - monty variables
+ * @arg: argument
+ * @file: monty file
+ * @content: line content
+ * @order: flag to determine stack/queue order
+ *
+ * Description: strcuture handles vatiables
+ * for the monty program
+ */
+typedef struct sq_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int order;
+} sq_t;
+extern sq_t sq;
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void _free(stack_t *head);
+int execute(char *content, stack_t **head, unsigned int line_number, FILE *file);
 
 #endif /* MONTY_H */
