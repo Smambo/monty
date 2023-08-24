@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #define UNUSED(x) (void)(x)
+#define LINE_BUF 1024
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,23 +40,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct sq_s - monty variables
- * @arg: argument
- * @file: monty file
- * @content: line content
- * @order: flag to determine stack/queue order
- *
- * Description: strcuture handles vatiables
- * for the monty program
- */
-typedef struct sq_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int order;
-} sq_t;
+extern int sq;
 
 void nop(stack_t **head, unsigned int line_number);
 void add(stack_t **head, unsigned int line_number);
@@ -63,13 +48,11 @@ void swap(stack_t **head, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void _free(stack_t *head);
-void add_node(stack_t **head, int n);
-void add_node_end(stack_t **head, int n);
-int execute(char *content, stack_t **head,
-		unsigned int line_number, FILE *file);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-extern sq_t sq;
+instruction_t *line_parse(char *content);
+char *get_opcode(char *str);
+int check_int(char *str);
 
 #endif /* MONTY_H */

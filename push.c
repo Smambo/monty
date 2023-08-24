@@ -7,36 +7,40 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int i = 0, flag = 0, n;
+	stack_t *temp, *new;
+	int push_val;
+	char *arg = strtok(NULL, "\n \t");
 
-	if (sq.arg)
+	if (!check_int(arg))
 	{
-		if (sq.arg[0] == '-')
-			i++;
-		for (; sq.arg[i] != '\0'; i++)
-		{
-			if (sq.arg[i] > 57 || sq.arg[i] < 48)
-				flag = 1;
-		}
-		if (flag == 1)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			fclose(sq.file);
-			free(sq.content);
-			_free(*stack);
-			exit(EXIT_FAILURE);
-		}
-	} else
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		fclose(sq.file);
-		free(sq.content);
-		_free(*stack);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	n = atoi(sq.arg);
-	if (sq.order == 0)
-		add_node(stack, n);
-	else
-		add_node_end(stack, n);
+	push_val = atoi(arg);
+	new = malloc(sizeof(stack_t));
+
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new->n = push_val;
+	new->prev = NULL;
+	new->next = NULL;
+
+	if (*stack == NULL)
+		*stack = new;
+	else if (sq)
+	{
+		(*stack)->prev = new;
+		new->next = *stack;
+		*stack = new;
+	} else
+	{
+		temp = *stack;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+		new->prev = temp;
+	}
 }
