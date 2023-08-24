@@ -1,4 +1,5 @@
 #include "monty.h"
+void nothing(void);
 sq_t sq = {NULL, NULL, NULL, 0};
 /**
  * main - entry point
