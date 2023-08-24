@@ -63,6 +63,8 @@ void swap(stack_t **head, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void _free(stack_t *head);
+void add_node(stack_t **head, int n);
+void add_node_end(stack_t **head, int n);
 int execute(char *content, stack_t **head,
 		unsigned int line_number, FILE *file);
 void pint(stack_t **stack, unsigned int line_number);

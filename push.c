@@ -7,7 +7,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int i = 0, flag = 0/*, n*/;
+	int i = 0, flag = 0, n;
 
 	if (sq.arg)
 	{
@@ -34,5 +34,9 @@ void push(stack_t **stack, unsigned int line_number)
 		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	/*n = atoi(sq.arg);*/
+	n = atoi(sq.arg);
+	if (sq.order == 0)
+		add_node(stack, n);
+	else
+		add_node_end(stack, n);
 }
