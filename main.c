@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 
 		if (input_line > 0)
 			execute(content, &stack, line_number, file);
-		free(content);
+		/*free(content);*/
 	}
 	_free(stack);
 	fclose(file);
