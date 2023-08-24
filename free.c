@@ -9,11 +9,14 @@ void _free(stack_t *head)
 {
 	stack_t *temp;
 
+	if (!head)
+		return;
+
 	temp = head;
-	while (head != NULL)
+	while (temp)
 	{
+		head = temp;
 		temp = head->next;
 		free(head);
-		head = temp;
 	}
 }

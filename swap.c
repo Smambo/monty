@@ -7,26 +7,19 @@
 */
 void swap(stack_t **head, unsigned int line_number)
 {
-	stack_t *h;
-	int len = 0, aux;
+	int aux;
 
-	h = *head;
-	while (h)
+	if ((*head) == NULL)
 	{
-		h = h->next;
-		len++;
-	}
-	if (len < 2)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-
-		fclose(sq.file);
-		free(sq.content);
-		_free(*head);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	aux = h->n;
-	h->n = h->next->n;
-	h->next->n = aux;
+	if ((*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	aux = (*head)->n;
+	(*head)->n = (*head)->next->n;
+	(*head)->next->n = aux;
 }

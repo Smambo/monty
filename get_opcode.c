@@ -9,6 +9,6 @@ char *get_opcode(char *str)
 {
 	char *opcode;
 
-	opcode = strtok(str, "\n\t");
+	opcode = strtok(str, " \n\t");
 	return (opcode);
 }
