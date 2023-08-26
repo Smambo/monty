@@ -43,6 +43,8 @@ instruction_t *line_parse(char *content)
 			instruction->f = _div;
 		if (strcmp(instruction->opcode, "mul") == 0)
 			instruction->f = mul;
+		if (strcmp(instruction->opcode, "mod") == 0)
+			instruction->f = mod;
 	}
 	return (instruction);
 }

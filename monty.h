@@ -53,6 +53,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 instruction_t *line_parse(char *content);
 char *get_opcode(char *str);
