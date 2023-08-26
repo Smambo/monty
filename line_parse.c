@@ -37,6 +37,12 @@ instruction_t *line_parse(char *content)
 			instruction->f = add;
 		if (strcmp(instruction->opcode, "nop") == 0)
 			instruction->f = nop;
+		if (strcmp(instruction->opcode, "sub") == 0)
+			instruction->f = sub;
+		if (strcmp(instruction->opcode, "div") == 0)
+			instruction->f = _div;
+		if (strcmp(instruction->opcode, "mul") == 0)
+			instruction->f = mul;
 	}
 	return (instruction);
 }
