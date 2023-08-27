@@ -12,7 +12,6 @@ instruction_t *line_parse(char *content)
 
 	opcode = get_opcode(content);
 	instruction = malloc(sizeof(*instruction));
-
 	if (instruction == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -20,7 +19,6 @@ instruction_t *line_parse(char *content)
 	}
 	instruction->opcode = opcode;
 	instruction->f = NULL;
-
 	if (instruction->opcode)
 	{
 		if (strcmp(instruction->opcode, "push") == 0)
@@ -45,10 +43,6 @@ instruction_t *line_parse(char *content)
 			instruction->f = mul;
 		if (strcmp(instruction->opcode, "mod") == 0)
 			instruction->f = mod;
-		if (strcmp(instruction->opcode, "pchar") == 0)
-			instruction->f = pchar;
-		if (strcmp(instruction->opcode, "pstr") == 0)
-			instruction->f = pstr;
 	}
 	return (instruction);
 }
